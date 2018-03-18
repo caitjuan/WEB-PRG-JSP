@@ -1,19 +1,20 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="js.js"></script>
-                
         <title> Sign Up | DIY minimalist </title>
     </head>
     
     <header>
         <ul id="header">
-            <a href="viewer_home.html" style="font-size:25px" class="glyphicon glyphicon-home pull-left"></a>
-            <a href="login.html" class="pull-right"><b>Log In</b></a>
+            <a href="viewer_home.jsp" style="font-size:25px" class="glyphicon glyphicon-home pull-left"></a>
+            <a href="login.jsp" class="pull-right"><b>Log In</b></a>
         </ul>
     </header>
     
@@ -54,11 +55,11 @@
         <ul id="footer">
             getting stuff done - minimalist style&ensp;
             |&ensp;
-            all rights reserved © 2018&ensp;
+            all rights reserved Â© 2018&ensp;
             |&ensp;
-            <a href="viewer_privacy.html" style="color:black;">Privacy Policy</a>&ensp;
+            <a href="viewer_privacy.jsp" style="color:black;">Privacy Policy</a>&ensp;
             |&ensp;
-            <a href="viewer_terms.html" style="color:black;">Terms of Use</a>
+            <a href="viewer_terms.jsp" style="color:black;">Terms of Use</a>
         </ul>
     </footer>
 </html>
