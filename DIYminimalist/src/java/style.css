@@ -1,0 +1,425 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.main {
+    background-color: #fff;
+    width: 75%;
+    height: 100%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 3%;
+    opacity: 0.8;
+    word-wrap: break-word;
+    margin-bottom: 50px;
+    overflow: auto;
+}
+
+.main label {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.main p {
+    font-size: 14px;
+    text-align: justify;
+    word-wrap: break-word;
+}
+
+.sidebarcss {
+    height:100%;
+    width: 225px;
+    text-align: left;
+    padding: 0px 16px;
+    float: none;
+    background-color: #7a8090;
+    position: fixed !important;
+    overflow: auto;
+    font-family: "Open Sans", sans-serif;
+    margin-top: -4.5%;
+    animation: slide 0.5s;
+    z-index: 2;    
+}
+
+
+@keyframes slide {
+    0% {left:-200px;}
+    100% {left:0px;}    
+}
+
+.sidebarcss a {
+    color: #d3d5da;
+    font-size: 18px;
+}
+
+#sidebarbutton {
+    outline: 0;
+}
+
+.sidebarcss a:hover {
+    color: #e9eaed;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.sidebarcss p {
+    font-size: 25px;
+    white-space: nowrap;
+}
+
+.sidebarcss .row {
+    margin-left: 2px;
+}
+
+#menubutton {
+    margin-top: -25px;
+    font-size: 20px;
+    color: #21264c;
+    background: #7a8090;
+    border: none;
+}
+
+
+.glyphicon.glyphicon-th-list {
+    font-size: 25px;
+    color: #21264c;
+    background: #7a8090;
+    border: none;
+    margin-top: 11px;
+}
+
+.search-container button {
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #646b7e;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background: #4d566b;
+}
+
+.search-container input[type=text] {
+    padding: 8px;
+    margin-top: 11px;
+    margin-left: 20px;
+    font-size: 12px;
+    border: none;
+    color: black;
+}
+
+ul#footer{
+    display: inline-block;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    height:2em;
+    margin:0;
+    padding:3px 10px;
+    background-color: #7a8090;
+    color:black;
+    text-align:center;
+}
+
+ul#header{
+    background-image: url("IMAGE BANK/header.jpg");
+    background-color: #7A8090;
+    background-repeat: no-repeat;
+    background-position: center; 
+    position:fixed;
+    display: inline-block;
+    margin:auto;
+    box-shadow:0 -1px rgba(0,0,0,.5) inset;
+    top:0;
+    width:100%;
+    height:4em;
+    padding:0 10px;   
+    overflow: hidden;
+}
+
+ul#header > a{
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.pull-right {
+    margin-right: 2%;
+    overflow: hidden;
+}
+
+.pull-right b {
+    color: #21264c;
+}
+
+#tags ul{
+    font-size:18px;    
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    list-style-type: none;
+}
+
+.profileform {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+    padding: 2%;
+    opacity: 0.8;
+    word-wrap: break-word;
+}
+
+.profileform input[type=text] {
+    font-family: "Open Sans", sans-serif;
+    border: none;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.profileform input[type=text]#name {
+    font-size:25px;
+    font-weight: bold;
+}
+
+.profileform input[type=text]#uname {
+    font-size:20px;
+    font-weight: bold;
+}
+
+.profileform input[type=text]#desc {
+    font-size:14px;
+}
+
+.createpostform label {
+    font-size: 16px;
+}
+
+.createpostform input[type=text]#title {
+    font-size:16px;
+    width:50%;
+}
+
+.createpostform input[type=text]#desc {
+    font-size:16px;
+    width:50%;
+}
+
+.createpostform input[type=text]#tags {
+    font-size:16px;
+    width:50%;
+}
+
+.createpostform input[type=submit] {
+    border: none;
+    outline: none;
+    color: #FFF;
+    background: #2566A5;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom:15px;
+    width: 50%;
+}
+
+.createpostform input[type=submit]#create {
+    background-color: #7a8090;
+}
+
+.createpostform input[type=submit]#cancel {
+    background-color: #f44336;
+}
+
+.upload {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    overflow: hidden;
+}
+
+/* START OF SIGN IN */
+.entryform {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    background: rgba(0,0,0,.8);
+    
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    border-radius: 10px;
+}
+
+div#signup {
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+.entryform .Login {
+    top: 50%;
+}
+
+.entryform .Signup {
+    top: 60%;
+}
+
+.entryform h1 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #03A9F4;
+    text-align: center;
+}
+
+.entryform .inputBox {
+    position: relative;
+}
+
+.entryform .inputBox input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #FCFCFC;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #FFF;
+    outline: none;
+    background: transparent;
+}
+
+.entryform .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #FFF;
+    pointer-events: none;
+    transition: .5s; 
+}
+
+.entryform .inputBox input:focus ~ label,
+.entryform .inputBox input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #03A9F4;
+    font-size: 12px;
+}
+
+.entryform input[type="submit"] {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #FFF;
+    background: #2566A5;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.entryform .center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* END OF SIGN IN */
+
+/* POST */
+#createtag, #deletebutton, #editbutton {
+    border: none;
+    outline: none;
+    color: #FFF;
+    background: #2566A5;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#viewhome {
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.5);
+    font-family: "Open Sans", sans-serif;
+}
+
+#viewhome modal{
+    opacity: 1;
+}
+
+#post {
+    margin-bottom: 20px;
+    border: 1px solid #777;
+    border-radius: 10px 10px 0px 0px ;
+    padding: 10px; 
+    overflow: auto;
+}
+
+#post .posttitle{
+    font-size: 25px;
+    padding: 5px;
+ }
+
+#post .postinfo {
+    padding: 5px;
+}
+
+#post table{
+    margin: auto;
+    padding: 10px;
+    table-layout: fixed;
+}
+
+#post .design {
+    height: 50px;
+    width: 50px;
+    border: none;
+}
+
+#post img{
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 250px;
+    max-width: 100%;
+    width: 250px;
+}
+
+#post .glyphicon {
+    margin-right: 10px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+#viewhome input[type="submit"]{
+    background: #2566A5;
+    color: #FFF;
+    font-size: 15px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;  
+    padding: 10px 20px;
+    cursor: pointer;
+ }
+/* END OF POST */
+
