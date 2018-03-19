@@ -6,6 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
     <script src="js.js"></script>
     <title> Edit Post | DIY minimalist </title>
     </head>
@@ -50,7 +52,7 @@
                         <input type="file" name="pic3" accept="image/*">
                     </div><br>
                     <label>Short description:</label>
-                    <input type="text" name="postdesc" id="desc" placeholder="Enter description..."><br><br>
+                    <textarea name="postdesc" id="desc" placeholder="Enter description..."></textarea><br><br>
                     <label>Tags:</label>
                     <input type="text" name="tag" id="tags" placeholder="Enter tags..."><br>
                     <label style="font-size:14px;font-weight:lighter">Separate the tags with commas (,)</label>
