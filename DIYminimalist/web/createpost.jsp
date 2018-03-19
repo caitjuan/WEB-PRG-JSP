@@ -41,7 +41,7 @@
         <div class="main">
             <label style="font-size:30px">CREATE POST</label>
             <div>
-                <form class="createpostform" method="post">
+                <form class="createpostform" method="post" enctype="multipart/form-data" action="upload">
                     <label>Title:</label>
                     <input type="text" name="postitle" id="title" placeholder="Title"><br><br>
                     <label> Upload your pictures:</label>
