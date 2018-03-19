@@ -35,7 +35,7 @@
             <tr><th><a href="createpost.jsp">Create Post</a></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="member_tags.jsp">Tags</a></th><th></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="settings.jsp">Account Settings</a></th><th></th></tr>
-            <tr><th><a href="member_about.html">About Us</a></th></tr>
+            <tr><th><a href="member_about.jsp">About Us</a></th></tr>
         </table>
         <div class="entryform">
             <h1>Change Account Settings</h1>
@@ -69,7 +69,7 @@
         <ul id="footer">
             getting stuff done - minimalist style&ensp;
             |&ensp;
-            all rights reserved © 2018&ensp;
+            all rights reserved Â© 2018&ensp;
             |&ensp;
             <a href="member_privacy.jsp" style="color:black;">Privacy Policy</a>&ensp;
             |&ensp;

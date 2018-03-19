@@ -65,7 +65,7 @@
         <ul id="footer">
             getting stuff done - minimalist style&ensp;
             |&ensp;
-            all rights reserved © 2018&ensp;
+            all rights reserved Â© 2018&ensp;
             |&ensp;
             <a href="member_privacy.jsp" style="color:black;">Privacy Policy</a>&ensp;
             |&ensp;

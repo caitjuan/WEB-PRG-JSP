@@ -10,8 +10,8 @@ function checkForm() {
     var usernameString = document.forms["loginform"]["username"].value;
     var passwordString = document.forms["loginform"]["password"].value;
     
-    if(usernameString === "jaijai"){
-        if(passwordString === "jaijai"){
+    if(usernameString === "ugandancluckcluckcluck"){
+        if(passwordString === "admin123"){
             window.location = "member_home.jsp";
             return false;
         }

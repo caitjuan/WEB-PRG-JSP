@@ -31,8 +31,6 @@
             </tr>
             <tr><th><a href="viewer_home.jsp">Home</a></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
-            <tr><th><a href="viewer_privacy.jsp">Privacy Policy</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="viewer_terms.jsp">Terms of Use</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
         
