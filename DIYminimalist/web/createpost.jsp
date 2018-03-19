@@ -40,25 +40,22 @@
         
         <div class="main">
             <label style="font-size:30px">CREATE POST</label>
-            <div>
-                <form class="createpostform" method="post" enctype="multipart/form-data" action="upload">
-                    <label>Title:</label>
-                    <input type="text" name="postitle" id="title" placeholder="Title"><br><br>
-                    <label> Upload your pictures:</label>
-                    <div class="upload">
-                        <input type="file" name="pic1" accept="image/*">
-                        <input type="file" name="pic2" accept="image/*">
-                        <input type="file" name="pic3" accept="image/*">
-                    </div><br>
-                    <label>Short description:</label>
-                    <input type="text" name="postdesc" id="desc" placeholder="Enter description..."><br><br>
-                    <label>Tags:</label>
-                    <input type="text" name="tag" id="tags" placeholder="Enter tags..."><br>
-                    <label style="font-size:14px;font-weight:lighter">Separate the tags with commas (,)</label>
-                    <input type="submit" value="Create" class="center-block" id="create">
-                    <input type="submit" value="Cancel" class="center-block" id="cancel">
-              </form>
-            </div>
+            <form action="uploadImage" class="createpostform" method="post" enctype="multipart/form-data">
+                <label>Title:</label>
+                <input type="text" name="postitle" id="title" placeholder="Title"><br><br>
+                <label> Upload your pictures:</label>
+                <div class="upload">
+                    <input type="file" name="pic1" accept="image/*">
+                    <input type="file" name="pic2" accept="image/*">
+                    <input type="file" name="pic3" accept="image/*">
+                </div><br>  
+                <label>Short description:</label>
+                <input type="text" name="postdesc" id="desc" placeholder="Enter description..."><br><br>
+                <label>Tags:</label>
+                <input type="text" name="tag" id="tags" placeholder="Enter tags..."><br>
+                <label style="font-size:14px;font-weight:lighter">Separate the tags with commas (,)</label>
+                <input type='submit' value="Create" class="center-block" id="create"/>
+          </form>
         </div>
     </body>
     
