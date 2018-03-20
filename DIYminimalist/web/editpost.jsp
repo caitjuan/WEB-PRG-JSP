@@ -42,7 +42,7 @@
         <div class="main">
             <label style="font-size:30px">EDIT POST</label>
             <div>
-                <form class="createpostform" method="post">
+                <form class="createpostform" method="post" action="uploadImage">
                     <label>Title:</label>
                     <input type="text" name="postitle" id="title" placeholder="Title"><br><br>
                     <label> Upload your pictures:</label>
