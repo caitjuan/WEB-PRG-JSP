@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.RequestDispatcher;
 
 import java.io.File;
 import java.util.List;
@@ -47,6 +48,9 @@ public class uploadImage extends HttpServlet {
                         File saveFile = new File("C:/images",fileName);
                         saveFile.createNewFile();
                         item.write(saveFile);
+                        
+                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/member_home.jsp");
+                        dispatcher.forward(request,response);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
