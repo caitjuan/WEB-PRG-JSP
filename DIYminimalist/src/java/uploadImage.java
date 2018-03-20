@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.util.List;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -39,6 +40,10 @@ public class uploadImage extends HttpServlet {
 
                     String fileName = item.getName();
                     try {
+                        File fileSaveDir=new File("C:/images");
+                        if(!fileSaveDir.exists()){
+                            fileSaveDir.mkdir();
+                        }
                         File saveFile = new File("C:/images",fileName);
                         saveFile.createNewFile();
                         item.write(saveFile);
