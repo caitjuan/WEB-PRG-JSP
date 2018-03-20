@@ -1,71 +1,60 @@
-import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+
+import java.io.File;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 @WebServlet(urlPatterns={"/uploadImage"})
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
                  maxFileSize=1024*1024*10,      // 10MB
                  maxRequestSize=1024*1024*50)
 public class uploadImage extends HttpServlet {
-    
-    private static final String SAVE_DIR = "images";
-    
+        
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String savePath = "C:" + File.separator + SAVE_DIR;
-        File fileSaveDir = new File(savePath);
-        
-        if(!fileSaveDir.exists()){
-            fileSaveDir.mkdir();
-        }
-        
-        String postTitle = request.getParameter("posttitle");
-        String postDesc = request.getParameter("postdesc");
+       
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        String contextRoot = request.getServletContext().getRealPath("/");
+        factory.setRepository(new File(contextRoot + "WEB-INF/tmp"));
+        ServletFileUpload upload = new ServletFileUpload(factory);
 
-        Part pic1 = request.getPart("pic1");  
-        Part pic2 = request.getPart("pic2");
-        Part pic3 = request.getPart("pic3");
+        try {
+            List<FileItem> items = upload.parseRequest(request);
+            for (FileItem item : items) {
+                if (!item.isFormField()) {
+                    System.out.println("Field name: " + item.getFieldName());
+                    System.out.println("File name: " + item.getName());
+                    System.out.println("File size: " + item.getSize());
+                    System.out.println("File type: " + item.getContentType());
 
-        String fileName1 = extractFileName(pic1);
-        String fileName2 = extractFileName(pic2);
-        String fileName3 = extractFileName(pic3);
-
-        pic1.write(savePath + File.separator + fileName1);
-        pic2.write(savePath + File.separator + fileName2);
-        pic3.write(savePath + File.separator + fileName3);
-
-        response.setContentType("text/html;charset=UTF-8");
-        
-        try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Homepage</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>" + "PUTA" + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-    
-    private String extractFileName(Part part) {
-        String contentDisp = part.getHeader("content-disposition");
-        String[] items = contentDisp.split(";");
-        for (String s : items) {
-            if (s.trim().startsWith("filename")) {
-                return s.substring(s.indexOf("=") + 2, s.length()-1);
+                    String fileName = item.getName();
+                    try {
+                        File saveFile = new File("C:/images",fileName);
+                        saveFile.createNewFile();
+                        item.write(saveFile);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        } catch (FileUploadException e) {
+            try {
+                throw new ServletException("Cannot parse multipart request.", e);
+            } catch (ServletException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
             }
         }
-        return "";
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
