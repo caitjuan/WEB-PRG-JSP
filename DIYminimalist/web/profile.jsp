@@ -1,4 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    response.setHeader("Cache-Control", "no-cache");
+    response.setHeader("Cache-Control", "no-store");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+%>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -14,7 +20,7 @@
     <header>
         <ul id="header">
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
-            <a href="login.jsp" class="pull-right"><b>Log Out</b></a>
+            <a href="/DIYminimalist/logOut" class="pull-right"><b>Log Out</b></a>
             <div class="search-container">
                 <form action="/action_page.php">
                   <input type="text" placeholder="Search..." name="search">

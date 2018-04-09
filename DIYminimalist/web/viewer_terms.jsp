@@ -1,3 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    response.setHeader("Cache-Control", "no-cache");
+    response.setHeader("Cache-Control", "no-store");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+%>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -115,7 +122,7 @@
         <ul id="footer">
             getting stuff done - minimalist style&ensp;
             |&ensp;
-            all rights reserved © 2018&ensp;
+            all rights reserved Â© 2018&ensp;
             |&ensp;
             <a href="viewer_privacy.jsp" style="color:black;">Privacy Policy</a>&ensp;
             |&ensp;

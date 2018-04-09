@@ -1,4 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    response.setHeader("Cache-Control", "no-cache");
+    response.setHeader("Cache-Control", "no-store");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+%>
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
@@ -12,9 +18,13 @@
     </head>
     
     <header>
+        <%
+            if ((session.getAttribute("userId") == null) || (session.getAttribute("userId") == "")) {
+        %>
         <ul id="header">
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
-            <a href="login.jsp" class="pull-right"><b>Log Out</b></a>
+            <a href="login.jsp" class="pull-right"><b>Log In</b></a>
+			<a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
             <div class="search-container">
                 <form action="/action_page.php">
                   <input type="text" placeholder="Search..." name="search">
@@ -22,10 +32,39 @@
                 </form>
             </div>
         </ul>
+        <% } else { %>
+        <ul id="header">
+            <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
+            <a href="/DIYminimalist/logOut" class="pull-right"><b>Log Out</b></a>
+            <div class="search-container">
+                <form action="/action_page.php">
+                  <input type="text" placeholder="Search..." name="search">
+                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                </form>
+            </div>
+        </ul>
+        <% } %>
     </header>
     
     <body background="IMAGE BANK\tagsbg.jpg">
+       <%
+            if ((session.getAttribute("userId") == null) || (session.getAttribute("userId") == "")) {
+        %>
         <table class="sidebarcss" style="display:none" id="sidebarjs">
+            <tr style="border-bottom:1px solid black">
+                <th style="width:80%"><p>MENU</p></th>
+                <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
+            </tr>
+            <tr><th><a href="viewer_home.jsp">Home</a></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
+        </table>
+        
+        <article class="main" id="viewhome">
+            <label>You are not logged in</label>
+        </article>
+        <% } else { %>
+        <table class="sidebarcss" style="display:none;margin-top:-1" id="sidebarjs">
             <tr style="border-bottom:1px solid black">
                 <th style="width:80%"><p>MENU</p></th>
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
@@ -37,7 +76,6 @@
             <tr style="border-bottom:1px solid black"><th><a href="settings.jsp">Account Settings</a></th><th></th></tr>
             <tr><th><a href="member_about.jsp">About Us</a></th></tr>
         </table>
-        
         <div class="main" id="tags">
             <label style="font-size:30px;">Tags</label>
             <button class="pull-right" id="createtag" data-toggle="modal" data-target="#myModal" style="font-size: 14px;">+ Create Tag</button>
@@ -54,6 +92,7 @@
                 <li>shoes</li>
             </ul>
         </div>
+        <% } %>
     </body>
     
     <div class="modal fade" id="myModal" role="dialog" tabindex="-1">

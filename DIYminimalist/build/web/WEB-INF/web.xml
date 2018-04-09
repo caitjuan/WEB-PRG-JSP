@@ -4,9 +4,25 @@
         <servlet-name>createMember</servlet-name>
         <servlet-class>controller.createMember</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>checkLogin</servlet-name>
+        <servlet-class>controller.checkLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>logOut</servlet-name>
+        <servlet-class>controller.logOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createMember</servlet-name>
         <url-pattern>/createMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>checkLogin</servlet-name>
+        <url-pattern>/checkLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logOut</servlet-name>
+        <url-pattern>/logOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
