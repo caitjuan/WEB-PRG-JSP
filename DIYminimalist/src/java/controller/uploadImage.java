@@ -1,3 +1,5 @@
+package controller;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -10,13 +12,12 @@ import javax.servlet.RequestDispatcher;
 import java.io.File;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-@WebServlet(urlPatterns={"/uploadImage"})
+@WebServlet(name = "uploadImage", urlPatterns = {"/uploadImage"})
 @MultipartConfig(fileSizeThreshold=1024*1024*2, // 2MB
                  maxFileSize=1024*1024*10,      // 10MB
                  maxRequestSize=1024*1024*50)
@@ -41,11 +42,11 @@ public class uploadImage extends HttpServlet {
 
                     String fileName = item.getName();
                     try {
-                        File fileSaveDir=new File("C:/images");
+                        File fileSaveDir=new File("C:/Users/caitl/Documents/DLSU/DLSU AY 1718 2nd term/WEB-PRG/GitHub/WEB-PRG-JSP/DIYminimalist/web/POSTS");
                         if(!fileSaveDir.exists()){
                             fileSaveDir.mkdir();
                         }
-                        File saveFile = new File("C:/images",fileName);
+                        File saveFile = new File("C:/Users/caitl/Documents/DLSU/DLSU AY 1718 2nd term/WEB-PRG/GitHub/WEB-PRG-JSP/DIYminimalist/web/POSTS",fileName);
                         saveFile.createNewFile();
                         item.write(saveFile);
                         
