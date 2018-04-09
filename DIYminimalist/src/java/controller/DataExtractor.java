@@ -42,4 +42,30 @@ public class DataExtractor {
         ResultSet rs = database.executeQueryWithReturn(ps);
         return rs;
     }
+    
+    public ResultSet getPost(String title){
+        String query = "SELECT username, title, description, postId, tagId FROM minimalist.post"
+                + "WHERE title LIKE '%" + title + "%'";
+        PreparedStatement ps = database.createStatement(query);
+        try{
+            ps.setString(1, title);
+        } catch (SQLException ex){
+            Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs = database.executeQueryWithReturn(ps);
+        return rs;
+    }
+    
+    public ResultSet getNumPosts(String title){
+        String query = "SELECT COUNT(DISTINCT postId) from minimalist.post"
+                + "WHERE title LIKE '%?%'";
+        PreparedStatement ps = database.createStatement(query);
+        try{
+            ps.setString(1, title);
+        } catch (SQLException ex){
+            Logger.getLogger(DataExtractor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rs = database.executeQueryWithReturn(ps);
+        return rs;
+    }
 }

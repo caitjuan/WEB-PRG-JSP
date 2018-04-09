@@ -47,7 +47,6 @@ public class checkLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        DataInserter in = new DataInserter();
         DataExtractor ex = new DataExtractor();
 
         String username = request.getParameter("username"),
@@ -90,6 +89,7 @@ public class checkLogin extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            ex.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
