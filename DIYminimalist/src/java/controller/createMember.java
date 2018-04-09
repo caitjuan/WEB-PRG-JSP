@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "createMember", urlPatterns = {"/createMember"})
 public class createMember extends HttpServlet {
@@ -73,7 +74,9 @@ public class createMember extends HttpServlet {
                         str.add(rs.getString(1));
                     }
                     if (str.isEmpty()) {
+                        HttpSession session = request.getSession();
                         in.insertNewMember(username, name, gender, email, password2);
+                        session.setAttribute("userId", username);
                         response.sendRedirect("/DIYminimalist/member_home.jsp");
                     } else {
                         request.setAttribute("error", "Username already exists. Please enter again.");
