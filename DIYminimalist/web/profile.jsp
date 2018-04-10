@@ -12,7 +12,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-	<link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <script src="js.js"></script>
     <title> Ugandan Knuckles | DIY minimalist </title>
     </head>
@@ -24,11 +24,11 @@
         <ul id="header">
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
             <a href="login.jsp" class="pull-right"><b>Log In</b></a>
-            <a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
+			<a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
             <div class="search-container">
-                <form action="/action_page.php">
-                    <input type="text" placeholder="Search..." name="search">
-                    <button type="submit" class="glyphicon glyphicon-search"></button>
+                <form action="search" method="post">
+                  <input type="text" placeholder="Search..." name="search">
+                  <input type="submit" class="glyphicon glyphicon-search" />
                 </form>
             </div>
         </ul>
@@ -37,9 +37,9 @@
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
             <a href="/DIYminimalist/logOut" class="pull-right"><b>Log Out</b></a>
             <div class="search-container">
-                <form action="search">
-                    <input type="text" placeholder="Search..." name="search">
-                    <button type="submit" class="glyphicon glyphicon-search"></button>
+                <form action="search" method="post">
+                  <input type="text" placeholder="Search..." name="search">
+                  <input type="submit" class="glyphicon glyphicon-search" />
                 </form>
             </div>
         </ul>
@@ -64,12 +64,12 @@
             <label>You are not logged in</label>
         </article>
         <% } else { %>
-        <table class="sidebarcss" style="display:none" id="sidebarjs">
+        <table class="sidebarcss" style="display:none;margin-top:-1" id="sidebarjs">
             <tr style="border-bottom:1px solid black">
                 <th style="width:80%"><p>MENU</p></th>
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
-            <tr><th><a href="profile.jsp">Username</a></th></tr>
+            <tr><th><a href="profile.jsp"><%= (session.getAttribute("userId")) %></a></th></tr>
             <tr><th><a href="member_home.jsp">Home</a></th></tr>
             <tr><th><a href="createpost.jsp">Create Post</a></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="member_tags.jsp">Tags</a></th><th></th></tr>

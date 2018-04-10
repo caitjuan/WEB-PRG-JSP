@@ -69,7 +69,7 @@
                 <th style="width:80%"><p>MENU</p></th>
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
-            <tr><th><a href="profile.jsp">Username</a></th></tr>
+            <tr><th><a href="profile.jsp"><%= (session.getAttribute("userId")) %></a></th></tr>
             <tr><th><a href="member_home.jsp">Home</a></th></tr>
             <tr><th><a href="createpost.jsp">Create Post</a></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="member_tags.jsp">Tags</a></th><th></th></tr>

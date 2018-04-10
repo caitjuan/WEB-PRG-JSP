@@ -21,29 +21,20 @@ public class createPost extends HttpServlet {
         DataInserter in = new DataInserter();
         DataExtractor ex = new DataExtractor();
                 
-        String  username = "caitcait",
+        String  username = request.getParameter("userId"),
                 title = request.getParameter("postitle"),
                 desc = request.getParameter("postdesc"),
                 tag = request.getParameter("tag").toLowerCase();
         int postid = ex.getNextPostID();
         tag = tag.replaceAll("\\s", "");
         String[] tags = tag.split(",");
-            
-        System.out.println("POST ID: " + postid);
-        System.out.println("TITLE: " + title);
-        System.out.println("DESCRIPTION: " + desc);
-        System.out.println("TAG: " + tag);
         
         for (String tag1 : tags) {
-            System.out.println("TAGS: " + tag1);
             if (ex.ifTagExist(tag1)) {
                 in.insertNewPost(postid, username, title, desc, ex.getTagID(tag1));
-                System.out.println("Post Created");
             } else {
                 in.insertNewTag(ex.getNextTagID(), tag1);
-                System.out.println("Tag Created");
                 in.insertNewPost(postid, username, title, desc, ex.getTagID(tag1));
-                System.out.println("Post Created");
             }
         }
         

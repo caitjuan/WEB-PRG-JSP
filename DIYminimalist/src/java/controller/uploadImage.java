@@ -34,7 +34,7 @@ public class uploadImage extends HttpServlet {
         String contextRoot = request.getServletContext().getRealPath("/");
         factory.setRepository(new File(contextRoot + "WEB-INF/tmp"));
         ServletFileUpload upload = new ServletFileUpload(factory);
-        String path = "D:/. College Docs/3RD YEAR/8TH TERM/WEB-PRG/Examples/MProject V1/WEB-PRG-JSP/DIYminimalist/web/POSTS";
+        String path = "C:\\Users\\caitl\\Documents\\DLSU\\DLSU AY 1718 2nd term\\WEB-PRG\\GitHub\\WEB-PRG-JSP\\DIYminimalist\\web\\POSTS";
         
         int postId = ex.getNextPostID() - 1,
             imagectr = 1;
@@ -42,14 +42,7 @@ public class uploadImage extends HttpServlet {
         try {
             List<FileItem> items = upload.parseRequest(request);
             for (FileItem item : items) {
-                if (!item.isFormField()) {
-                    String fileName = item.getName();
-                    
-                    System.out.println("Field name: " + item.getFieldName());
-                    System.out.println("File name: " + fileName);
-                    System.out.println("File size: " + item.getSize());
-                    System.out.println("File type: " + item.getContentType());
-                    
+                if (!item.isFormField()) {                    
                     try {
                         File fileSaveDir = new File(path);
                         if(!fileSaveDir.exists()){
