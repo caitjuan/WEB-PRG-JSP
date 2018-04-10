@@ -64,7 +64,7 @@
             <label>You are not logged in</label>
         </article>
         <% } else { %>
-        <table class="sidebarcss" style="display:none;margin-top:-1" id="sidebarjs">
+        <table class="sidebarcss" style="display:none;margin-top:0" id="sidebarjs">
             <tr style="border-bottom:1px solid black">
                 <th style="width:80%"><p>MENU</p></th>
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
