@@ -18,19 +18,52 @@
     </head>
 
     <header>
+        <%
+            if ((session.getAttribute("userId") == null) || (session.getAttribute("userId") == "")) {
+        %>
+        <ul id="header">
+            <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
+            <a href="login.jsp" class="pull-right"><b>Log In</b></a>
+            <a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
+            <div class="search-container">
+                <form action="/action_page.php">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit" class="glyphicon glyphicon-search"></button>
+                </form>
+            </div>
+        </ul>
+        <% } else { %>
         <ul id="header">
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
             <a href="/DIYminimalist/logOut" class="pull-right"><b>Log Out</b></a>
             <div class="search-container">
-                <form action="/action_page.php">
-                  <input type="text" placeholder="Search..." name="search">
-                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                <form action="search">
+                    <input type="text" placeholder="Search..." name="search">
+                    <button type="submit" class="glyphicon glyphicon-search"></button>
                 </form>
             </div>
         </ul>
+        <% } %>
     </header>
     
     <body background="IMAGE BANK\homebg.png">
+        <%
+            if ((session.getAttribute("userId") == null) || (session.getAttribute("userId") == "")) {
+        %>
+        <table class="sidebarcss" style="display:none" id="sidebarjs">
+            <tr style="border-bottom:1px solid black">
+                <th style="width:80%"><p>MENU</p></th>
+                <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
+            </tr>
+            <tr><th><a href="viewer_home.jsp">Home</a></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
+        </table>
+        
+        <article class="main" id="viewhome">
+            <label>You are not logged in</label>
+        </article>
+        <% } else { %>
         <table class="sidebarcss" style="display:none" id="sidebarjs">
             <tr style="border-bottom:1px solid black">
                 <th style="width:80%"><p>MENU</p></th>
@@ -101,6 +134,7 @@
             </div>
         </div>
     </body>
+    <% } %>
     
     <footer>
         <ul id="footer">

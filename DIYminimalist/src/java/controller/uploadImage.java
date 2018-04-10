@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
@@ -24,47 +26,51 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class uploadImage extends HttpServlet {
         
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-       
+            throws ServletException, IOException, SQLException {
+        DataInserter in = new DataInserter();
+        DataExtractor ex = new DataExtractor();
+                
         DiskFileItemFactory factory = new DiskFileItemFactory();
         String contextRoot = request.getServletContext().getRealPath("/");
         factory.setRepository(new File(contextRoot + "WEB-INF/tmp"));
         ServletFileUpload upload = new ServletFileUpload(factory);
-
+        String path = "D:/. College Docs/3RD YEAR/8TH TERM/WEB-PRG/Examples/MProject V1/WEB-PRG-JSP/DIYminimalist/web/POSTS";
+        
+        int postId = ex.getNextPostID() - 1,
+            imagectr = 1;
+                
         try {
             List<FileItem> items = upload.parseRequest(request);
             for (FileItem item : items) {
                 if (!item.isFormField()) {
+                    String fileName = item.getName();
+                    
                     System.out.println("Field name: " + item.getFieldName());
-                    System.out.println("File name: " + item.getName());
+                    System.out.println("File name: " + fileName);
                     System.out.println("File size: " + item.getSize());
                     System.out.println("File type: " + item.getContentType());
-
-                    String fileName = item.getName();
+                    
                     try {
-                        File fileSaveDir=new File("C:/Users/caitl/Documents/DLSU/DLSU AY 1718 2nd term/WEB-PRG/GitHub/WEB-PRG-JSP/DIYminimalist/web/POSTS");
+                        File fileSaveDir = new File(path);
                         if(!fileSaveDir.exists()){
                             fileSaveDir.mkdir();
                         }
-                        File saveFile = new File("C:/Users/caitl/Documents/DLSU/DLSU AY 1718 2nd term/WEB-PRG/GitHub/WEB-PRG-JSP/DIYminimalist/web/POSTS",fileName);
+                        String newFilename = "POST" + postId + "_image" + (imagectr++) + ".jpg";
+                        File saveFile = new File(path, newFilename);
+                        in.insertNewImage(postId, newFilename);
+                        
                         saveFile.createNewFile();
                         item.write(saveFile);
-                        
-                        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/member_home.jsp");
-                        dispatcher.forward(request,response);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
-        } catch (FileUploadException e) {
-            try {
-                throw new ServletException("Cannot parse multipart request.", e);
-            } catch (ServletException e1) {
-                // TODO Auto-generated catch block
-                e1.printStackTrace();
-            }
-        }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/member_home.jsp");
+            dispatcher.forward(request,response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }       
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -79,7 +85,11 @@ public class uploadImage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(uploadImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -93,7 +103,11 @@ public class uploadImage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(uploadImage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -105,4 +119,8 @@ public class uploadImage extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private String String(Object attribute) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" type="text/css" href="style.css" />
         <script src="js.js"></script>
-        <title> Home | DIY minimalist </title>
+        <title> Search Results | DIY minimalist </title>
     </head>
 
     <header>
@@ -25,11 +25,11 @@
         <ul id="header">
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
             <a href="login.jsp" class="pull-right"><b>Log In</b></a>
-			<a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
+            <a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
             <div class="search-container">
-                <form action="/action_page.php">
-                  <input type="text" placeholder="Search..." name="search">
-                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                <form action="search" method="post">
+                    <input type="text" placeholder="Search..." name="search">
+                    <input type="submit" class="glyphicon glyphicon-search" />
                 </form>
             </div>
         </ul>
@@ -38,15 +38,15 @@
             <button onclick="openSidebar()" class="glyphicon glyphicon-th-list pull-left" id="sidebarbutton"></button>
             <a href="/DIYminimalist/logOut" class="pull-right"><b>Log Out</b></a>
             <div class="search-container">
-                <form action="search">
-                  <input type="text" placeholder="Search..." name="search">
-                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                <form action="search" method="post">
+                    <input type="text" placeholder="Search..." name="search">
+                    <input type="submit" class="glyphicon glyphicon-search" />
                 </form>
             </div>
         </ul>
         <% } %>
     </header>
-    
+
     <body background="IMAGE BANK\homebg.png">
         <%
             if ((session.getAttribute("userId") == null) || (session.getAttribute("userId") == "")) {
@@ -75,44 +75,64 @@
         </table>
         <% } %>
         <article class="main" id="viewhome">
-            <% String search = (String) request.getAttribute("search"); %>
-            <label style="font-size:30px">Search Results for <%= search %></label>
-            <% 
+            <% String search = (String) request.getAttribute("search");%>
+            <label style="font-size:25px">Search Results for <%= search%></label>
+            <%
                 ArrayList<String> username = (ArrayList<String>) request.getAttribute("username");
                 ArrayList<String> title = (ArrayList<String>) request.getAttribute("title");
                 ArrayList<String> desc = (ArrayList<String>) request.getAttribute("desc");
+                ArrayList<String> fileName = (ArrayList<String>) request.getAttribute("fileName");
+                ArrayList<String> path = (ArrayList<String>) request.getAttribute("path");
+                ArrayList<String> tags = (ArrayList<String>) request.getAttribute("tags");
                 ArrayList<String> postId = (ArrayList<String>) request.getAttribute("postId");
-                ArrayList<String> tagId = (ArrayList<String>) request.getAttribute("tagId");
                 
-                int ctr = (int) request.getAttribute("ctr");
-                if(username != null)
+                String tempUser, tempTitle, tempDesc, tempImgSrc1, tempImgSrc2, tempImgSrc3, tempTag;
+                int j = 1;
+                for (int i = 0; i < username.size(); i+=3) {
+                    tempUser = username.get(i);
+                    tempTitle = title.get(i);
+                    tempDesc = desc.get(i);
+                    
+                    tempImgSrc1 = "POSTS\\" + fileName.get(i);
+                    tempImgSrc2 = "POSTS\\" + fileName.get(i + 1);
+                    tempImgSrc3 = "POSTS\\" + fileName.get(i + 2);
             %>
-<!--            <div id="post">
-                <p class="posttitle"></p>
+
+            <div id="post">
+                <p class="posttitle"><%= tempTitle %></p>
                 <table>
                     <tr>
-                        <th><img src="POSTS\popsicle.jpg"></th>
+                        <th><img src="<%= tempImgSrc1 %>"></th>
                         <th><img src="IMAGE BANK\plus.png" class="design"></th>
-                        <th><img src="POSTS\glue.jpg"></th>
+                        <th><img src="<%= tempImgSrc2 %>"></th>
                         <th><img src="IMAGE BANK\equals.png" class="design"></th>
-                        <th><img src="POSTS\popsicle house.jpg"></th>
+                        <th><img src="<%= tempImgSrc3 %>"></th>
                     </tr>
                 </table>   
                 <div class="postinfo">
                     <div> 
-                        <a></a>
+                        <a><%= tempUser %></a>
                     </div>
                     <div> 
-                       
+                        <%= tempDesc %>
                     </div>
                     <div> TAGS:
-                        <a>crafts</a>
-                        <a>sticks</a>
-                        <a>glue</a>
+                        <% 
+                            for(int k = 0; k < tags.size(); k++) {
+                                tempTag = tags.get(k);
+                                if(tempTag.startsWith(Integer.toString(j))) {
+                                    tempTag = tempTag.substring(1);
+                        %>
+                        <a><%= tempTag %></a>
+                        <%
+                                }
+                            }   
+                            j++;
+                        %>
                     </div>  
                 </div>
             </div>
-            <input type="submit" value="View More" class="center-block">-->
+            <% } %>
         </article>
     </body>
 
@@ -122,9 +142,17 @@
             |&ensp;
             all rights reserved © 2018&ensp;
             |&ensp;
+            <%
+                if ((session.getAttribute ("userId") == null) || (session.getAttribute("userId") == "")) {
+            %>
+            <a href="viewer_privacy.jsp" style="color:black;">Privacy Policy</a>&ensp;
+            |&ensp;
+            <a href="viewer_terms.jsp" style="color:black;">Terms of Use</a>
+            <% } else { %>
             <a href="member_privacy.jsp" style="color:black;">Privacy Policy</a>&ensp;
             |&ensp;
             <a href="member_terms.jsp" style="color:black;">Terms of Use</a>
+            <% }%>
         </ul>
     </footer>
 </html>
