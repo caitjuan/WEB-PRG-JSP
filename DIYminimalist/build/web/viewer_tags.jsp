@@ -23,9 +23,9 @@
             <a href="login.jsp" class="pull-right"><b>Log In</b></a>
 			<a href="signup.jsp" class="pull-right"><b>Sign Up</b></a>
 			<div class="search-container">
-                <form action="/action_page.php">
+                <form action="search" method="post">
                   <input type="text" placeholder="Search..." name="search">
-                  <button type="submit" class="glyphicon glyphicon-search"></button>
+                  <input type="submit" class="glyphicon glyphicon-search" />
                 </form>
             </div>
         </ul>
