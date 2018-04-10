@@ -16,6 +16,10 @@
         <servlet-name>search</servlet-name>
         <servlet-class>controller.search</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>showPosts</servlet-name>
+        <servlet-class>controller.showPostsMember</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createMember</servlet-name>
         <url-pattern>/createMember</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>search</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showPosts</servlet-name>
+        <url-pattern>/showPosts</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -84,20 +84,7 @@ public class search extends HttpServlet {
                                 tags.add((i+1) + resarray.get(i).getString(1));
                             }
                             i++;
-                        }
-                        //delete later
-                        i = 0;
-                        while (i < tags.size()) {
-                            System.out.println(tags.get(i));
-                            i++;
-                        }
-                        //delete until here
-                        i = 0;
-                        while (i < postId.size()) {
-                            System.out.println(postId.get(i));
-                            i++;
-                        }
-                        
+                        }                        
                         
                         request.setAttribute("postId", postId);
                         request.setAttribute("tags", tags);

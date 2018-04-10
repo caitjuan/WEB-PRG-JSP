@@ -154,4 +154,21 @@ public class DataExtractor {
         return tagid;
     }
     
+    public ResultSet getAllPosts() {
+        String query = "SELECT DISTINCT(post.username), post.title, post.description, image.fileName "
+                + " FROM minimalist.post JOIN minimalist.image\n"
+                + "WHERE post.postID = image.postId;";
+        PreparedStatement ps = database.createStatement(query);
+        
+        ResultSet rs = database.executeQueryWithReturn(ps);
+        return rs;
+    }
+    
+    public ResultSet getDistinctPostIdAll(){
+        String query = "SELECT DISTINCT(postId) from minimalist.post";
+        PreparedStatement ps = database.createStatement(query);
+        
+        ResultSet rs = database.executeQueryWithReturn(ps);
+        return rs;
+    }
 }
