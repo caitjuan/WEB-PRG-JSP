@@ -28,7 +28,7 @@
             <div class="search-container">
                 <form action="search" method="post">
                   <input type="text" placeholder="Search..." name="search">
-                  <input type="submit" class="glyphicon glyphicon-search" />
+                  <button type="submit" class="glyphicon glyphicon-search"></button>
                 </form>
             </div>
         </ul>
@@ -39,7 +39,7 @@
             <div class="search-container">
                 <form action="search" method="post">
                   <input type="text" placeholder="Search..." name="search">
-                  <input type="submit" class="glyphicon glyphicon-search" />
+                  <button type="submit" class="glyphicon glyphicon-search"></button>
                 </form>
             </div>
         </ul>
