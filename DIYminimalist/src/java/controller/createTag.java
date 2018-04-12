@@ -36,8 +36,7 @@ public class createTag extends HttpServlet {
             }
         }
         
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/member_tags.jsp");
-        dispatcher.forward(request,response);
+        response.sendRedirect("/DIYminimalist/showTagsMember");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

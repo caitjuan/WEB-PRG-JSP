@@ -28,6 +28,18 @@
         <servlet-name>createTag</servlet-name>
         <servlet-class>controller.createTag</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>showTags</servlet-name>
+        <servlet-class>controller.showTagsMember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>showTagsViewer</servlet-name>
+        <servlet-class>controller.showTagsViewer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>updateSettings</servlet-name>
+        <servlet-class>controller.updateSettings</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>createMember</servlet-name>
         <url-pattern>/createMember</url-pattern>
@@ -55,6 +67,18 @@
     <servlet-mapping>
         <servlet-name>createTag</servlet-name>
         <url-pattern>/createTag</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showTags</servlet-name>
+        <url-pattern>/showTags</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>showTagsViewer</servlet-name>
+        <url-pattern>/showTagsViewer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>updateSettings</servlet-name>
+        <url-pattern>/updateSettings</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
 <%
     response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Cache-Control", "no-store");
@@ -56,7 +57,7 @@
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
             <tr><th><a href="/DIYminimalist/showPostsViewer">Home</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsViewer">Tags</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
         
@@ -72,26 +73,24 @@
             <tr><th><a href="profile.jsp"><%= (session.getAttribute("userId")) %></a></th></tr>
             <tr><th><a href="/DIYminimalist/showPostsMember">Home</a></th></tr>
             <tr><th><a href="createpost.jsp">Create Post</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="member_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsMember">Tags</a></th><th></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="settings.jsp">Account Settings</a></th><th></th></tr>
             <tr><th><a href="member_about.jsp">About Us</a></th></tr>
         </table>
-        <div class="main" id="tags">
+        <article class="main" id="tags">
             <label style="font-size:30px;">Tags</label>
             <button class="pull-right" id="createtag" data-toggle="modal" data-target="#myModal" style="font-size: 14px;">+ Create Tag</button>
             <br><br>
-            <ul>
-                <li>crafts</li>
-                <li>sticks</li>
-                <li>glue</li>
-                <li>felt</li>
-                <li>cloth</li>
-                <li>toys</li>
-                <li>thread</li>
-                <li>button</li>
-                <li>shoes</li>
+            <ul><%
+                    ArrayList<String> tags = (ArrayList<String>) request.getAttribute("tags");
+                    
+                    if(tags != null)
+                    for(int i = 0; i < tags.size(); i++) {
+                %>
+                <li><%= (tags.get(i)) %></li>
+                <% } %>
             </ul>
-        </div>
+        </article>
         <% } %>
     </body>
     

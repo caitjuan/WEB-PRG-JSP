@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
 <%
     response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Cache-Control", "no-store");
@@ -38,25 +39,22 @@
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
             <tr><th><a href="/DIYminimalist/showPostsViewer">Home</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsViewer">Tags</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
-        <div class="main" id="tags">
+        <article class="main" id="tags">
             <label style="font-size:30px;">Tags</label>
             <br><br>
-            <ul>
-                <li>crafts</li>
-                <li>sticks</li>
-                <li>glue</li>
-                <li>felt</li>
-                <li>cloth</li>
-                <li>toys</li>
-                <li>thread</li>
-                <li>button</li>
-                <li>shoes</li>
-            </ul>
-            
-        </div>
+            <ul><%
+                    ArrayList<String> tags = (ArrayList<String>) request.getAttribute("tags");
+                    
+                    if(tags != null)
+                    for(int i = 0; i < tags.size(); i++) {
+                %>
+                <li><%= (tags.get(i)) %></li>
+                <% } %>
+            </ul>            
+        </article>
     </body>
     
     <footer>

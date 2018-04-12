@@ -56,7 +56,7 @@
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
             <tr><th><a href="/DIYminimalist/showPostsViewer">Home</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsViewer">Tags</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
         
@@ -72,7 +72,7 @@
             <tr><th><a href="profile.jsp"><%= (session.getAttribute("userId")) %></a></th></tr>
             <tr><th><a href="/DIYminimalist/showPostsMember">Home</a></th></tr>
             <tr><th><a href="createpost.jsp">Create Post</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="member_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsMember">Tags</a></th><th></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="settings.jsp">Account Settings</a></th><th></th></tr>
             <tr><th><a href="member_about.jsp">About Us</a></th></tr>
         </table>

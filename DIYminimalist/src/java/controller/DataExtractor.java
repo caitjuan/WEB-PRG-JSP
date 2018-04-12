@@ -71,6 +71,14 @@ public class DataExtractor {
         return rs;
     }
     
+    public ResultSet getAllTags(){
+        String query = "SELECT tags.tagname FROM minimalist.tags;";
+        PreparedStatement ps = database.createStatement(query);
+        
+        ResultSet rs = database.executeQueryWithReturn(ps);
+        return rs;
+    }
+    
     public ResultSet getDistinctPostId(String title){
         String query = "SELECT DISTINCT(postId) from minimalist.post\n" +
         "WHERE post.title LIKE ?;";

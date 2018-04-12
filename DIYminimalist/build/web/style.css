@@ -266,7 +266,6 @@ ul#header > a{
     width: 400px;
     padding: 40px;
     background: rgba(0,0,0,.8);
-    
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0,0,0,.5);
@@ -284,6 +283,10 @@ div#signup {
 
 .entryform .Signup {
     top: 60%;
+}
+
+.entryform .Settings {
+    top: 50%;
 }
 
 .entryform h1 {

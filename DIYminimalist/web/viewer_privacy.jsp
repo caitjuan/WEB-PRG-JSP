@@ -37,7 +37,7 @@
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
             <tr><th><a href="/DIYminimalist/showPostsViewer">Home</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsViewer">Tags</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
         

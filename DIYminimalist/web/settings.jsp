@@ -56,7 +56,7 @@
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
             <tr><th><a href="/DIYminimalist/showPostsViewer">Home</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsViewer">Tags</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
         
@@ -72,31 +72,45 @@
             <tr><th><a href="profile.jsp"><%= (session.getAttribute("userId")) %></a></th></tr>
             <tr><th><a href="/DIYminimalist/showPostsMember">Home</a></th></tr>
             <tr><th><a href="createpost.jsp">Create Post</a></th></tr>
-            <tr style="border-bottom:1px solid black"><th><a href="member_tags.jsp">Tags</a></th><th></th></tr>
+            <tr style="border-bottom:1px solid black"><th><a href="/DIYminimalist/showTagsMember">Tags</a></th><th></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="settings.jsp">Account Settings</a></th><th></th></tr>
             <tr><th><a href="member_about.jsp">About Us</a></th></tr>
         </table>
-        <div class="entryform">
+        <div class="entryform" id="settings">
             <h1>Change Account Settings</h1>
-            <form>
+            <form method="post" action="updateSettings">
+                <input type="hidden" name="userId" value="<%= (session.getAttribute("userId")) %>">
+                
                 <div class="inputBox">
-                    <input type="text" required="">
+                    <input name="username" type="text" required="">
                     <label>Username</label>
                 </div>
                 <div class="inputBox">
-                    <input type="text" required="">
-                    <label>Description</label>
+                    <input name="name" type="text" required="">
+                    <label>Name</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" required="">
+                    <input name="email" type="text" required="">
+                    <label>Email</label>
+                </div>
+                <div class="inputBox">
+                    <input name="gender" type="text" required="">
+                    <label>Gender</label>
+                </div>
+                <div class="inputBox">
+                    <input name="desc" type="text">
+                    <label>Description (optional)</label>
+                </div>
+                <div class="inputBox">
+                    <input name="pw1" type="password" required="">
                     <label>New Password</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" required="">
+                    <input name="pw2" type="password" required="">
                     <label>Retype Password</label>
                 </div>
                 <div class="inputBox">
-                    <input type="password" required="">
+                    <input name="oldpw" type="password" required="">
                     <label>Enter Old Password to Confirm</label>
                 </div>
                 <input type="submit" value="Submit" class="center-block">

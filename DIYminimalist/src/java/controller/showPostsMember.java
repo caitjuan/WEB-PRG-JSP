@@ -77,19 +77,7 @@ public class showPostsMember extends HttpServlet {
                             }
                             i++;
                         }
-                        //delete later
-                        i = 0;
-                        while (i < tags.size()) {
-                            System.out.println(tags.get(i));
-                            i++;
-                        }
-                        //delete until here
-                        i = 0;
-                        while (i < postId.size()) {
-                            System.out.println(postId.get(i));
-                            i++;
-                        }
-                        
+                                                
                         request.setAttribute("postId", postId);
                         request.setAttribute("tags", tags);
 
