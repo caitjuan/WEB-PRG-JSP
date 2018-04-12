@@ -102,14 +102,15 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title">CREATE TAG</h4>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        Tag name: <input type="text" name="tag">
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <input type="submit" class="btn btn-default" data-dismiss="modal" value="Add">
-                </div>
+                
+                <form name="tagform" action="createTag" method="post" onsubmit="return getTags()">
+                    <div class="modal-body">
+                        Tag name: <input type="text" name="tag" id="tag">
+                    </div>
+                    <div class="modal-footer" >
+                        <input type="submit" class="btn btn-default" value="ADD">
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@
 
     <header>
         <ul id="header">
-            <a href="viewer_home.jsp" style="font-size:25px" class="glyphicon glyphicon-home pull-left"></a>
+            <a href="/DIYminimalist/showPostsViewer" style="font-size:25px" class="glyphicon glyphicon-home pull-left"></a>
             <a href="login.jsp" class="pull-right"><b>Log In</b></a>
         </ul>
     </header>
