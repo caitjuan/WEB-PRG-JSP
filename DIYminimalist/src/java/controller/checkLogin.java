@@ -59,7 +59,7 @@ public class checkLogin extends HttpServlet {
                         if (str.get(0).equals(password)) {
                             HttpSession session = request.getSession();
                             session.setAttribute("userId", username);
-                            response.sendRedirect("/DIYminimalist/member_home.jsp");
+                            response.sendRedirect("/DIYminimalist/showPostsMember");
                         } else {
                             request.setAttribute("error", "Incorrect username and/or password");
                             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

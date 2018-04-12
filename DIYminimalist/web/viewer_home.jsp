@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.*"%>
 <%
     response.setHeader("Cache-Control", "no-cache");
     response.setHeader("Cache-Control", "no-store");
@@ -37,82 +38,66 @@
                 <th style="width:80%"><p>MENU</p></th>
                 <th><button onclick="closeSidebar()" class="glyphicon glyphicon-remove" id="menubutton"></button></th>
             </tr>
-            <tr><th><a href="viewer_home.jsp">Home</a></th></tr>
+            <tr><th><a href="/DIYminimalist/showPostsViewer">Home</a></th></tr>
             <tr style="border-bottom:1px solid black"><th><a href="viewer_tags.jsp">Tags</a></th><th></th></tr>
             <tr><th><a href="viewer_about.jsp">About Us</a></th></tr>
         </table>
-        
         <article class="main" id="viewhome">
+            <%
+                ArrayList<String> username = (ArrayList<String>) request.getAttribute("username");
+                ArrayList<String> title = (ArrayList<String>) request.getAttribute("title");
+                ArrayList<String> desc = (ArrayList<String>) request.getAttribute("desc");
+                ArrayList<String> fileName = (ArrayList<String>) request.getAttribute("fileName");
+                ArrayList<String> tags = (ArrayList<String>) request.getAttribute("tags");
+                
+                String tempUser, tempTitle, tempDesc, tempImgSrc1, tempImgSrc2, tempImgSrc3, tempTag;
+                int j = 1;
+                for (int i = 0; i < username.size(); i+=3) {
+                    tempUser = username.get(i);
+                    tempTitle = title.get(i);
+                    tempDesc = desc.get(i);
+                    
+                    tempImgSrc1 = "POSTS\\" + fileName.get(i);
+                    tempImgSrc2 = "POSTS\\" + fileName.get(i + 1);
+                    tempImgSrc3 = "POSTS\\" + fileName.get(i + 2);
+            %>
+
             <div id="post">
-                <p class="posttitle">Popsicle House</p>
+                <p class="posttitle"><%= tempTitle %></p>
                 <table>
                     <tr>
-                        <th><img src="POSTS\popsicle.jpg"></th>
+                        <th><img src="<%= tempImgSrc1 %>"></th>
                         <th><img src="IMAGE BANK\plus.png" class="design"></th>
-                        <th><img src="POSTS\glue.jpg"></th>
+                        <th><img src="<%= tempImgSrc2 %>"></th>
                         <th><img src="IMAGE BANK\equals.png" class="design"></th>
-                        <th><img src="POSTS\popsicle house.jpg"></th>
+                        <th><img src="<%= tempImgSrc3 %>"></th>
                     </tr>
                 </table>   
                 <div class="postinfo">
-                    <div><a>@zaish1026</a></div>
-                    <div> Recycle your popsicle sticks into a popsicle house!!</div>
+                    <div> 
+                        <a><%= tempUser %></a>
+                    </div>
+                    <div> 
+                        <%= tempDesc %>
+                    </div>
                     <div> TAGS:
-                        <a>crafts</a>
-                        <a>sticks</a>
-                        <a>glue</a>
+                        <% 
+                            for(int k = 0; k < tags.size(); k++) {
+                                tempTag = tags.get(k);
+                                if(tempTag.startsWith(Integer.toString(j))) {
+                                    tempTag = tempTag.substring(1);
+                        %>
+                        <a><%= tempTag %></a>
+                        <%
+                                }
+                            }   
+                            j++;
+                        %>
                     </div>  
                 </div>
             </div>
-            
-            <div id="post">
-                <p class="posttitle">Button Shoes</p>
-                <table>
-                    <tr>
-                        <th><img src="POSTS\buttons.jpg"></th>
-                        <th><img src="IMAGE BANK\plus.png" class="design"></th>
-                        <th><img src="POSTS\shoes.jpg"></th>
-                        <th><img src="IMAGE BANK\equals.png" class="design"></th>
-                        <th><img src="POSTS\button shoes.jpg"></th>
-                    </tr>
-                </table>  
-                <div class="postinfo">
-                    <div> <a>@kwaninipanini</a></div>
-                    <div>Design old shoes with colorful buttons..</div>
-                    <div> TAGS:
-                        <a>crafts</a>
-                        <a>button</a>
-                        <a>shoes</a>
-                    </div>   
-                </div>
-            </div>
-            
-            <div id="post">
-                <p class="posttitle">Felt Toys</p>
-                <table>
-                    <tr>
-                        <th><img src="POSTS\felt cloth.jpg"></th>
-                        <th><img src="IMAGE BANK\plus.png" class="design"></th>
-                        <th><img src="POSTS\thread.jpg"></th>
-                        <th><img src="IMAGE BANK\equals.png" class="design"></th>
-                        <th><img src="POSTS\felt toys.jpg"></th>
-                    </tr>
-                </table>
-                <div class="postinfo">
-                    <div><a>@ugandancluckcluckcluck</a></div>
-                    <div>Give love and make felt toys ♥</div>
-                    <div> TAGS:
-                        <a>crafts</a>
-                        <a>felt</a>
-                        <a>thread</a>
-                        <a>toys</a>
-                        <a>cloth</a>
-                    </div>  
-                </div>
-            </div>
-            
-            <input type="submit" value="View More" class="center-block">
-        </article>   
+            <% } %>
+        </article>
     </body>
     
     <footer>
